@@ -1,6 +1,6 @@
 # Wish games
 
-Welkom op mijn GitHub-project tech! Dit was een schoolproject waarbij ik een applicatie heb gemaakt om mijn feature te registreren. Op deze applicatie kun je games vinden en bewaren om ze later te kunnen kopen. Maar om dat te kunnen doen, moet je eerst kunnen aanmelden op de pagina. Op mijn [wiki] (https://github.com/Alexiatech/Tech23/wiki/Wiki)  vertel ik uitgebreid over mijn proces.
+Welkom op mijn GitHub-project tech! Dit was een schoolproject waarbij ik een applicatie heb gemaakt om mijn feature te registreren. Op deze applicatie kun je games vinden en bewaren om ze later te kunnen kopen. Maar om dat te kunnen doen, moet je eerst kunnen aanmelden op de pagina. Op mijn [wiki](https://github.com/Alexiatech/Tech23/wiki/Wiki)  vertel ik uitgebreid over mijn proces.
 # Het concept
 Wish games is een applicatie waar je games kunt bekijken en bewaren zodat je deze later kunt kopen of meteen kunt kopen. Maar mijn applicatie zou niet werken als je niet kunt registreren. Hoe zou de applicatie anders weten wie de games opslaat? Daarom ben ik dieper ingedoken om deze feature (registreren) te bekijken, welke plug-ins ik nodig had en welke code je moet gebruiken om deze werkend te maken. In mijn idee & concept vertel ik verder over de applicatie.
 Wat moet je installeren!
@@ -73,7 +73,7 @@ De app is ontworpen om op een telefoon scherm te werken. om dit goed te laten zi
 
 |Vakken |	Programmeer Taal	|Editor|
 | ------------- |:-------------:| -------------|
-|Project Tech |	GIT & Github |	 [Repository] (https://github.com/Alexiatech/Tech23/wiki/Wiki)|
+|Project Tech |	GIT & Github |	 [Repository](https://github.com/Alexiatech/Tech23/wiki/Wiki)|
 |Front-end  development |	EJS, JS, Html & css	|Visual Studio Code|
 |Back-end development |	Node.js |	Visual Studio Code|
 
