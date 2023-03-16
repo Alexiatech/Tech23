@@ -5,17 +5,21 @@ const bodyParser = require('body-parser');
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const port = 2000;
 const passwordCon = process.env.PASSWORD
+const session = require('express-session');
 
+
+const bcrypt = require('bcrypt');
 
 
 app.use("/public", express.static("public"));
 app.set("view engine", "ejs");
 
-app.get ('/', onHome).listen(1337);
-
-function onHome (req, res) {
-    res.send ('hallo')
-}
+app.use(session({
+  secret: 'geheime_sleutel',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}));
 
 //routing
 
@@ -37,11 +41,26 @@ app.get('/form', (req, res) => {
   res.render('form.ejs');
 });
 
+app.post('/submit', (req, res) => {
+  const userdata = req.body;
+  res.render('confirmation.ejs', { userdata: userdata });
+});
+
+
+app.get('/update', async (req, res) => {
+  const userId = req.session.userId; // haal het userId op uit de sessie
+
+  // haal de gegevens van de huidige gebruiker op uit de database
+  const user = await db.collection('gegevens').findOne({ _id: ObjectId(userId) });
+
+  // render de update pagina en geef de gebruikersgegevens door als parameter
+  res.render('update.ejs', { user: user });
+});
 
 
 //submitting
 
-app.post('/submit', (req, res) => {
+app.post('/submit', async (req, res) => {
   const name = req.body.name;
   const email = req.body.email;
   const password = req.body.password1;
@@ -49,17 +68,59 @@ app.post('/submit', (req, res) => {
   const country = req.body.country; 
   const birthday = req.body.date;
 
+  console.log(name, email, password, secondpassword, country, birthday);
+
   if(password !== secondpassword) {
     res.locals.Errorcode = "Password does NOT match";
     res.render('form.ejs');
+  } else {
+    // hash and salt the password
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-    }
- else{
-  res.send(`Name: ${name}, Email: ${email}, Password: ${password}, Country: ${country}, Birthday: ${birthday},`);
-}
+    // save the user data to the database
+    const userdata = {
+      name: name,
+      pwd: hashedPassword, 
+      email: email,
+      country: country,
+      birthday: birthday
+    };
+    await db.collection('gegevens').insertOne(userdata);
 
-  console.log(req.body)
+    // store the user data in session or temporary storage
+    req.session.userdata = userdata;
+
+    // redirect the user to the confirmation page
+    res.redirect('/confirmation');
+  }
   
+});
+
+app.post('/update', async (req, res) => {
+  const { ObjectId } = require("mongodb");
+  
+  const name = req.body.name;
+  const email = req.body.email;
+  const country = req.body.country; 
+  const birthday = req.body.date;
+
+  // retrieve the user data from session or temporary storage
+  const userdata = req.session.userdata;
+
+  // update the user data in the database
+  await db.collection('gegevens').updateOne(
+    { email: userdata.email },
+    { $set: { name: name, email: email, country: country, birthday: birthday } }
+  );
+
+  // update the user data in session or temporary storage
+  userdata.name = name;
+  userdata.email = email;
+  userdata.country = country;
+  userdata.birthday = birthday;
+
+  // redirect the user to the confirmation page
+  res.redirect('/confirmation');
 });
 
 
@@ -92,10 +153,4 @@ app.listen(port, async () => {
   let theData = await db.collection('gegevens').find({}).toArray();
   console.log(theData);
 });
-
-// app.get('/', async(req, res)) => {
-//   const db = client.db("Gebruikersgegevens").collection("gegevens");
-//   const connectDb = await db.find({}).toArray();
-//   console.log ("@@-- data", connectDb); 
-// }
 

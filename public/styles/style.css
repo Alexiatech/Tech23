@@ -1,74 +1,83 @@
 /* index page */
-.index body {
-    background-color: rgb(212, 212, 233);
-    display:flex;
-    justify-content: center;
-    margin-top: 10em;
+.index {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #e8ddcf;
 }
 
-.index section {
-    /* display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(8, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px; */
+ul {
+    list-style: none;
+    margin-top: 80px;
+   
+    padding: 0;
+}
+
+li {
+    display: inline-block;
+    margin: 20px;
+    position: relative;
+}
+
+li img {
+    display: block;
+    width: 200px;
+    height: 200px;
+}
+
+
+main {
+    flex: 1;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+/* header */
+header {
+    background-color: #bba88b;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffff;
+
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 
-
-}
-
-.index section ul>img {
-    position: absolute;
-    width: 4em;
-    height: 4em;
-}
-
-.index ul {
-    list-style: none;
-    padding: 1em;
-}
+    
 
 
+    padding: 5px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+  }
+  
+  header a{
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 30px;
+  }
 
-.index section ul li>img {
-    width: 21em;
-    height: 21em;
-    transition: .6s;
+  header a:nth-last-child(){
+    color: #fff;
+    float: right;
+    padding-right: 20px;
+  }
 
-   
+  footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #bba88b;
+        padding: 10px;
 
-
-
-}
-
-.index img:hover {
-    transform: scale(0.8);
-}
-
-
-
-
+        color: #ffff;
+  }
 /* form page  */
 
 
-body {
-    background-color: rgb(161, 161, 236);
-    display:flex;
-    justify-content: center;
-    margin-top: 10em;
-}
 
-input {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-color: rgb(161, 161, 236);
-    border-radius: 1em;
-}
-
-label {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
 
 
 
