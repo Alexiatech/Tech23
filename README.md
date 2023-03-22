@@ -1,9 +1,9 @@
 # Wish games
 
-Welkom op mijn GitHub-project tech! Dit was een schoolproject waarbij ik een applicatie heb gemaakt om mijn feature te registreren. Op deze applicatie kun je games vinden en bewaren om ze later te kunnen kopen. Maar om dat te kunnen doen, moet je eerst kunnen aanmelden op de pagina. Op mijn [wiki](https://github.com/Alexiatech/Tech23/wiki/Wiki)  vertel ik uitgebreid over mijn proces.
+Welkom op mijn GitHub-project tech! Dit was een schoolproject waarbij ik een applicatie heb gemaakt om mijn feature te registreren. Op deze applicatie kun je games vinden en bewaren om ze later te kunnen kopen. Maar om dat te kunnen doen, moet je eerst kunnen aanmelden op de pagina. Op mijn [wiki](https://github.com/Alexiatech/Tech23/wiki/Wiki)  vertel ik uitgebreid over mijn proces.<br
 
 
-<img width="186" alt="Screenshot 2023-03-15 at 23 20 07" src="https://user-images.githubusercontent.com/118124953/226986368-81fb4094-d6ac-4855-9cd5-a3475e71e842.png">
+<img width="200" alt="Screenshot 2023-03-15 at 23 20 07" src="https://user-images.githubusercontent.com/118124953/226986368-81fb4094-d6ac-4855-9cd5-a3475e71e842.png">
 
 
 # Het concept
@@ -88,7 +88,6 @@ De app is ontworpen om op een telefoon scherm te werken. om dit goed te laten zi
 |Back-end development |	Node.js |	Visual Studio Code|
 
 ## Licence 
-Ik gebruik als licence MI![3_0](https://user-images.githubusercontent.com/118124953/226986684-d7f9629a-32cf-4789-b068-c6a1cdedd3e9.png)
-T license 
-
+Ik gebruik als licence MIT license 
+![3_0](https://user-images.githubusercontent.com/118124953/226986684-d7f9629a-32cf-4789-b068-c6a1cdedd3e9.png)
 
