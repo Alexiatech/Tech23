@@ -1,8 +1,15 @@
 # Wish games
 
 Welkom op mijn GitHub-project tech! Dit was een schoolproject waarbij ik een applicatie heb gemaakt om mijn feature te registreren. Op deze applicatie kun je games vinden en bewaren om ze later te kunnen kopen. Maar om dat te kunnen doen, moet je eerst kunnen aanmelden op de pagina. Op mijn [wiki](https://github.com/Alexiatech/Tech23/wiki/Wiki)  vertel ik uitgebreid over mijn proces.
+<img width="186" alt="Screenshot 2023-03-15 at 23 20 07" src="https://user-images.githubusercontent.com/118124953/226986368-81fb4094-d6ac-4855-9cd5-a3475e71e842.png">
+
+
 # Het concept
 Wish games is een applicatie waar je games kunt bekijken en bewaren zodat je deze later kunt kopen of meteen kunt kopen. Maar mijn applicatie zou niet werken als je niet kunt registreren. Hoe zou de applicatie anders weten wie de games opslaat? Daarom ben ik dieper ingedoken om deze feature (registreren) te bekijken, welke plug-ins ik nodig had en welke code je moet gebruiken om deze werkend te maken. In mijn idee & concept vertel ik verder over de applicatie.
+
+![ps4-games](https://user-images.githubusercontent.com/118124953/226986553-871f5a5a-743b-4e3a-9fe1-5e7060a86a1a.gif)
+
+
 Wat moet je installeren!
 Voordat je Wish games installeert, moet je eerst dit installeren.
 ## GIT
@@ -78,4 +85,7 @@ De app is ontworpen om op een telefoon scherm te werken. om dit goed te laten zi
 |Back-end development |	Node.js |	Visual Studio Code|
 
 ## Licence 
-Ik gebruik als licence MIT license 
+Ik gebruik als licence MI![3_0](https://user-images.githubusercontent.com/118124953/226986684-d7f9629a-32cf-4789-b068-c6a1cdedd3e9.png)
+T license 
+
+
