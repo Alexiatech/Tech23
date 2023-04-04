@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+
 </head>
 
 
@@ -17,22 +19,18 @@
         
 
     <main>
-
         <div class="carousel-container">
             <img src="../public/upload/images/promo-god_of_war.jpeg" alt="God of war"/>
             <img src="../public/upload/images/outer-worlds-promo.webp" alt="outer-worlds"/>
             <img src="../public/upload/images/Odyssey_Keyart_Logo.webp" alt="Odyssey keyart"/>
             <img src="../public/upload/images//Hogwarts-Legacy-Harry-Potter.jpeg" alt="Hogwarts legacy"/>
           </div>
-
-        
-          <% if (typeof(session.username) !== 'undefined') { %>
-            <p>Welkom <%= session.username %>!</p>
-          <% } %>
         
           <p>Nog geen account? <a href="form">Registeren</a></p>
 
-          <h2></h2>
+          <h2>
+              <%= randomQuote %>
+          </h2>
 
 
         <ul>
