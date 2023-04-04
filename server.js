@@ -2,14 +2,13 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const port = 2000;
 const passwordCon = process.env.PASSWORD
 const session = require('express-session');
 
 
 const bcrypt = require('bcrypt');
-
 
 app.use("/public", express.static("public"));
 app.set("view engine", "ejs");
@@ -23,17 +22,10 @@ app.use(session({
 
 //routing
 
-app.get("/registreren", (req, res) => {
-    res.render("registreren.ejs", {data: port})
-});
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/index', (req, res) => {
+app.get('/', (req, res) => {
   res.render('index.ejs');
-});
-
-app.get('/header', (req, res) => {
-  res.render('index');
 });
 
 app.get('/form', (req, res) => {
@@ -41,24 +33,9 @@ app.get('/form', (req, res) => {
   res.render('form.ejs');
 });
 
-app.post('/submit', (req, res) => {
-  const userdata = req.body;
-  res.render('confirmation.ejs', { userdata: userdata });
+app.get('/login', (req, res) => {
+  res.render('inloggen.ejs');
 });
-
-
-app.get('/update', async (req, res) => {
-  const userId = req.session.userId; // haal het userId op uit de sessie
-
-  // haal de gegevens van de huidige gebruiker op uit de database
-  const user = await db.collection('gegevens').findOne({ _id: ObjectId(userId) });
-
-  // render de update pagina en geef de gebruikersgegevens door als parameter
-  res.render('update.ejs', { user: user });
-});
-
-
-//submitting
 
 app.post('/submit', async (req, res) => {
   const name = req.body.name;
@@ -91,37 +68,74 @@ app.post('/submit', async (req, res) => {
     req.session.userdata = userdata;
 
     // redirect the user to the confirmation page
-    res.redirect('/confirmation');
+    res.redirect('/login');
   }
   
 });
 
-app.post('/update', async (req, res) => {
-  const { ObjectId } = require("mongodb");
+
+
+// inloggen 
+
+app.post('/login', async (req, res) => {
+  const emailSignin = req.body.emailsign;
+  const passwordSignin = req.body.passwordsign;
+  console.log('hello')
+
+  const user = await db.collection('gegevens').findOne({ email: emailSignin });
+
+  if (!user) {
+    return res.render('inloggen', { error: 'Invalid email or password' });
+  }
+
+  const isMatch = await bcrypt.compare(passwordSignin, user.pwd);
+
+  if (!isMatch) {
+    return res.render('inloggen', { error: 'Invalid email or password' });
+  } else {
+      // Store the user's name in the session
+      req.session.username = user.name;
   
+     
+  }
+
+  req.session.userId = user._id;
+
+  res.redirect('/');
+});
+
+
+
+// gegevens updaten 
+
+app.get('/update', async (req, res) => {
+  const userId = req.session.userId;
+
+  const user = await db.collection('gegevens').findOne({ _id: ObjectId(userId) });
+
+  if (!user) {
+    return res.redirect('/login');
+  }
+
+  res.render('update', { user });
+});
+
+app.post('/update', async (req, res) => {
+  const userId = req.session.userId;
+
   const name = req.body.name;
   const email = req.body.email;
   const country = req.body.country; 
   const birthday = req.body.date;
 
-  // retrieve the user data from session or temporary storage
-  const userdata = req.session.userdata;
-
-  // update the user data in the database
   await db.collection('gegevens').updateOne(
-    { email: userdata.email },
-    { $set: { name: name, email: email, country: country, birthday: birthday } }
+    { _id: ObjectId(userId) },
+    { $set: { name, email, country, birthday } }
   );
 
-  // update the user data in session or temporary storage
-  userdata.name = name;
-  userdata.email = email;
-  userdata.country = country;
-  userdata.birthday = birthday;
-
-  // redirect the user to the confirmation page
   res.redirect('/confirmation');
 });
+
 
 
 // mongodb 
