@@ -4,20 +4,21 @@ const app = express();
 const bodyParser = require('body-parser');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const port = 2000;
-const passwordCon = process.env.PASSWORD
+const uriDB = process.env.URIDB
 const bcrypt = require('bcrypt');
 
 let db = null;
 let randomQuote;
 
 async function connectDB() {
-  console.log('connecting')
-  const uri = "mongodb+srv://alexiawiersma:" + passwordCon + "@alexiawiersma.5d12jf8.mongodb.net/?retryWrites=true&w=majority"
+  console.log('connecting');
+  const uri = uriDB;
   const client = new MongoClient(uri, {
       useNewUrlParser: true,
-      useUnifiedTopology: true, serverApi: ServerApiVersion.v1
+      useUnifiedTopology: true,
   });
   try {
+      console.log("awaiting connection");
       await client.connect();
       console.log('connected!')
       db = client.db('Gebruikersgegevens');
@@ -32,13 +33,6 @@ async function connectDB() {
 
 
 
-//server configurations
-app.listen(port, async () => {
-  console.log('Server started on port 2000');
-  let databaseConnection = await connectDB();
-  let theData = await db.collection('gegevens').find({}).toArray();
-  console.log(theData);
-});
 
 
 
@@ -164,3 +158,10 @@ app.post('/login', async (req, res) => {
 
 
 
+//server configurations
+app.listen(port, async () => {
+  console.log('Server started on port 2000');
+  await connectDB();
+  let theData = await db.collection('gegevens').find({}).toArray();
+  console.log(theData);
+});
