@@ -7,15 +7,20 @@
     <title>Confirmation</title>
 </head>
 <body>
-        <h1>Thank you for registering</h1>
-        <p>Here is your registration information:</p>
+    <h1>Thank you for registering</h1>
+    <p>Here is your registration information:</p>
+
+    <h1>Confirmation page</h1>
 
 
-        <a href="update">change my data</a>
+    <p>Name: <%= userdata.name %></p>
+    <p>Email: <%= userdata.email %></p>
+    <p>birthday: <%= userdata.birthday %></p>
+    <p>Country: <%= userdata.country %></p>
 
-        <a href="index">go to the home page</a>
 
+    <a href="update">Change my data</a>
 
-    </body>
-
+    <a href="index">Go to the home page</a>
+</body>
 </html>

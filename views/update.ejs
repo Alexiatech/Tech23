@@ -9,29 +9,26 @@
 <body>
 
     <h1>Update User Data</h1>
-    <form method="POST" action="/update">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name">
-
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email">
-
-      <label for="password">New Password:</label>
-      <input type="password" id="password" name="password">
-
-      <label for="country">Country:</label>
-      <select id="country" name="country">
-        <option value="Netherlands">Netherlands</option>
-        <option value="Belgium">Belgium</option>
-        <option value="Germany">Germany</option>
-        <option value="France">France</option>
-      </select>
-
-      <label for="date">Birthday:</label>
-      <input type="date" id="date" name="date">
-
-      <button type="submit">Update</button>
-    </form>
+    <form action="/submit-updated" method="POST">
+        <label for="name">Naam:</label>
+        <input type="text" id="name" name="name" value="<%= user.name %>">
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="<%= user.email %>">
+        
+        <label for="password1">Wachtwoord:</label>
+        <input type="password" id="password1" name="password1">
+        
+        <label for="country">Land:</label>
+        <input type="text" id="country" name="country" value="<%=user.country%>">
+        
+        <label for="date">Geboortedatum:</label>
+        <input type="date" id="date" name="date" value="<%=user.birthday%>">
+        
+        <button type="submit">Bewerken</button>
+      </form>
+      
+    
     
 </body>
 </html>
