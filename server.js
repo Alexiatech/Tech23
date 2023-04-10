@@ -1,6 +1,5 @@
 require('dotenv').config();
 
-
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -9,8 +8,10 @@ const port = 3000;
 const uriDB = process.env.URIDB
 const bcrypt = require('bcrypt');
 
+
+
 let db = null;
-let randomQuote;
+
 
 async function connectDB() {
   console.log('connecting');
@@ -32,6 +33,7 @@ async function connectDB() {
   }
 }
 
+
 app.use("/public", express.static("public"));
 app.set("view engine", "ejs");
 
@@ -52,12 +54,6 @@ app.get('/form', (req, res) => {
 app.get('/login', (req, res) => {
   res.render('inloggen.ejs');
 });
-
-app.get('/update', (req, res) => {
-  res.render('update.ejs');
-});
-
-
 
 
 app.post('/submit', async (req, res) => {
@@ -94,19 +90,6 @@ app.post('/submit', async (req, res) => {
 });
 
 
-
-app.get('/update', async (req, res) => {
-  // Haal de eerste gebruiker op uit de collectie 'gegevens'
-  const user = await db.collection('gegevens').findOne({});
-  
-  // Render de update-pagina en geef de gebruikersgegevens mee als een object
-  res.render('update', { user });
-});
-
-
-
-
-
 // inloggen 
 
 app.post('/login', async (req, res) => {
@@ -128,6 +111,28 @@ app.post('/login', async (req, res) => {
     res.redirect('/');
      }
 
+});
+
+app.post('/delete', async (req, res) => {
+  try {
+    // Haal de naam van de te verwijderen gebruiker op uit de POST request
+    const name = req.body.delete.trim(); // use trim() to remove extra spaces
+    console.log(`hello`);
+
+    // Verwijder de gebruiker met de opgegeven naam uit de "Users" collectie
+    const result = await db.collection('gegevens').deleteOne({
+      name: name
+    });
+    if (result.deletedCount === 0) {
+      res.status(404).send('Gebruiker niet gevonden');
+      return;
+    }
+   
+    res.redirect('/update');
+  } catch (error) {
+    console.error(error);
+    res.status(400).send('Er is een fout opgetreden bij het verwijderen van de gebruiker');
+  }
 });
 
 

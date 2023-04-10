@@ -22,7 +22,9 @@
 ul {
   list-style: none;
   padding: 0;
-  text-align: center; /* afbeeldingen centreren */
+  text-align: center; 
+  margin-top: 30em;
+
 }
 
 li {
@@ -48,8 +50,8 @@ li img {
 
 
 li img:hover {
-  box-shadow: 0px 0px 15px 3px rgba(0, 255, 0, 0.7); /* voeg een groen "gloeiend" effect toe wanneer de afbeeldingen worden aangeraakt */
-  border: 2px solid rgba(0, 255, 0, 0.7); /* verander de transparante rand naar groen bij hover */
+  box-shadow: 0px 0px 15px 3px rgba(0, 255, 0, 0.7); 
+  border: 2px solid rgba(0, 255, 0, 0.7); 
   
 }
 

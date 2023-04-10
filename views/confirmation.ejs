@@ -19,7 +19,11 @@
     <p>Country: <%= userdata.country %></p>
 
 
-    <a href="update">Change my data</a>
+    <
+    <form method="POST" action="/delete">
+        <input type="hidden" name="delete" value="<%= userdata.name %>">
+        <button type="submit">Verwijder account</button>
+    </form>
 
     <a href="index">Go to the home page</a>
 </body>
