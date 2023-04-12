@@ -136,12 +136,20 @@ app.post('/delete', async (req, res) => {
 });
 
 
+app.get('/update', (req, res) => {
+  res.render('update.ejs');
+});
+
+
+
+
 app.use(function (req, res) {
   res.locals.title = "Error 404"
   res.status(404).render('404', {
     path: 'Error'
   });
 });
+
 
 
 //server configurations

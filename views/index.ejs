@@ -3,6 +3,10 @@
 
 <head>
     <link href="../public/styles/style.css" rel="stylesheet">
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+    
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,10 +30,15 @@
             <img src="../public/upload/images//Hogwarts-Legacy-Harry-Potter.jpeg" alt="Hogwarts legacy"/>
           </div>
         
-          <p>Nog geen account? <a href="form">Registeren</a></p>
-
 
         <ul>
+            <p>Nog geen account? <a href="form">Registeren</a></p>
+
+            <div class="quoteContainer">
+                <div id="img"></div>
+                <div id="text"></div>
+              </div>
+
             <h3>Nieuwste Games!</h3>
             
             <li><img src="../public/upload/images/animal_crossing.jpeg" alt="Animal crossing"></li>
@@ -61,10 +70,6 @@
 
             <ul>
     </main>
-
-
-    <%- include('footer') %>
-    
 
 </body>
 
