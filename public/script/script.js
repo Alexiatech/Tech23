@@ -1,5 +1,3 @@
-
-
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(showPosition);
 } else {
@@ -16,20 +14,29 @@ function showPosition(position) {
 
 
 
-const h1 = document.getElementById('img');
 
-
-function updateQuote(){
-
-fetch ('https://api.chucknorris.io/jokes/random')
-  .then(response => response.json())
-  .then(data => {
-  console.log(data);
-  h1.innerHTML = data.data;
+// function updateQuote(){
+// fetch ('https://meowfacts.herokuapp.com/')
+//   .then(response => response.json())
+//   .then(data => {
+//   console.log(data);
+//   h1.innerHTML = data.data;
  
-});
+// });
+// }
+
+// updateQuote();
+
+// setInterval(updateQuote, 5000);
+function updateJoke() {
+  fetch('https://api.chucknorris.io/jokes/random')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      document.getElementById("quote").innerHTML = data.value;
+    });
 }
 
-updateQuote();
+updateJoke();
 
-setInterval(updateQuote, 5000);
+setInterval(updateJoke, 9000);

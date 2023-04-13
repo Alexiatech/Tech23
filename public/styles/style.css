@@ -32,7 +32,6 @@ ul {
 
 li {
   display: inline-block;
-  margin: 15px;
   position: relative;
 }
 
@@ -294,7 +293,7 @@ button[type="submit"]:hover {
   
 }
 
-.confirm a {
+ a {
   color: #ffff;
 }
 
@@ -375,9 +374,16 @@ p span {
 }
 
 
-.quoteContainer{
-  margin-bottom:10em;
-  padding : 3em;
+#quote{
+  padding : 1em;
+  text-align: center;
+
+  background-color: #ffff;
+  border-radius: 1em;
+
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 10em;
+
 }
 
 

@@ -1,5 +1,4 @@
-require('dotenv').config(); //De dotenv module wordt gebruikt om environment variabelen te laden
-// Dit is een code om een Node.js server op te zetten met Express en MongoDB als database. 
+require('dotenv').config(); 
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');// body-parser om de data van HTTP requests te parsen
@@ -8,12 +7,12 @@ const {
   ServerApiVersion
 } = require('mongodb');
 const port = 3000;
-const uriDB = process.env.URIDB//Het haalt de URI op uit de omgevingsvariabele 'URIDB' die is ingesteld in het bestand .env, met behulp van de module dotenv.
+const uriDB = process.env.URIDB //Het haalt de URI op uit de omgevingsvariabele 'URIDB' die is ingesteld in het bestand .env, met behulp van de module dotenv.
 const bcrypt = require('bcrypt');
 
 
 
-let db = null;
+// let db = null;
 
 // Maakt een connectie met een MongoDB-database met behulp van 
 // de geconfigureerde URI. Vervolgens initialiseert het een MongoClient en verbindt het met de database.
@@ -85,7 +84,7 @@ app.post('/submit', async (req, res) => {
   const secondpassword = req.body.password2;
   const country = req.body.country;
   const birthday = req.body.date;
-
+  console.log("hello")
 
   if (!name || !email || !password || !secondpassword || !country || !birthday) {
     res.locals.Errorcode = "Please fill in all required fields";
@@ -106,7 +105,10 @@ app.post('/submit', async (req, res) => {
       country: country,
       birthday: birthday
     };
+
     await db.collection('gegevens').insertOne(userdata);
+
+    console.log(db)
 
     // redirect the user to the confirmation page
     res.render('confirmation.ejs', {
@@ -171,7 +173,7 @@ app.post('/login', async (req, res) => {
 app.post('/delete', async (req, res) => {
   try {
 
-    const name = req.body.delete.trim();
+    const name = req.body.delete;
     console.log(`hello`);
 
 
