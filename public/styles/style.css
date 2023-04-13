@@ -224,8 +224,11 @@ button[type="submit"]:hover {
   background-color: #3e8e41;
 }
 
-.error {
+
+
+.errorCode {
   color: red;
+  font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   margin-top: 5px;
 }
@@ -375,5 +378,25 @@ p span {
 .quoteContainer{
   margin-bottom:10em;
   padding : 3em;
+}
+
+
+/* Error page layout */
+.errorPage{
+display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.errorPage h1 {
+  text-align: center;
+  color: rgb(22, 18, 18);
+}
+.errorPage p {
+  text-align: center;
+  font-size: 18px;
+  color: rgb(49, 43, 43);
 }
 

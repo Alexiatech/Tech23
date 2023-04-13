@@ -13,9 +13,11 @@
 
     <%- include('header') %>
 
-    <h1><%= Errorcode %></h1>
+    <h3 class="errorCode"><%= Errorcode %></h3>
 
     <form action="/submit" method="POST" class="form-container">
+        <h3 class="errorCode"><%= Errorcode %></h3>
+        
         <label for="name">Name:</label>
         <input type="text" id="name" name="name">
 
