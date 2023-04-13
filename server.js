@@ -12,7 +12,7 @@ const bcrypt = require('bcrypt');
 
 
 
-// let db = null;
+let db = null;
 
 // Maakt een connectie met een MongoDB-database met behulp van 
 // de geconfigureerde URI. Vervolgens initialiseert het een MongoClient en verbindt het met de database.
