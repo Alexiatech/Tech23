@@ -8,26 +8,11 @@ function showPosition(position) {
   var latitude = position.coords.latitude;
   var longitude = position.coords.longitude;
   // Doe hier iets met de verkregen locatiegegevens, bijvoorbeeld:
-  alert("Latitude: " + latitude + "\nLongitude: " + longitude);
+  alert("Latitude: " + latitude + "Longitude: " + longitude);
 }
 
 
-
-
-
-// function updateQuote(){
-// fetch ('https://meowfacts.herokuapp.com/')
-//   .then(response => response.json())
-//   .then(data => {
-//   console.log(data);
-//   h1.innerHTML = data.data;
- 
-// });
-// }
-
-// updateQuote();
-
-// setInterval(updateQuote, 5000);
+// chuck norris jokes 
 function updateJoke() {
   fetch('https://api.chucknorris.io/jokes/random')
     .then(response => response.json())
@@ -37,6 +22,7 @@ function updateJoke() {
     });
 }
 
-updateJoke();
 
-setInterval(updateJoke, 9000);
+  updateJoke();
+  setInterval(updateJoke, 9000);
+
